@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Reservations from '../components/Reservations/Reservations'
 import Form from '../components/Form/Form'
+import Error from '../components/Error/Error'
 
 class App extends Component {
   constructor() {
@@ -30,17 +31,23 @@ class App extends Component {
   }
 
   render = () => {
-    return (
-      <div className="App">
-        <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <div className='resy-form'>
-          <Form makeReservation={this.makeReservation}/>
+    if (this.state.error) {
+      return(
+        <Error error={this.state.error}/>
+      )
+    } else {
+      return (
+        <div className="App">
+          <h1 className='app-title'>Turing Cafe Reservations</h1>
+          <div className='resy-form'>
+            <Form makeReservation={this.makeReservation}/>
+          </div>
+          <div className='resy-container'>
+            <Reservations reservations={this.state.reservations}/>
+          </div>
         </div>
-        <div className='resy-container'>
-          <Reservations reservations={this.state.reservations}/>
-        </div>
-      </div>
-    )
+      )
+    }
   }
 }
 
