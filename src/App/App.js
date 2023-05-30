@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
+import Reservations from '../components/Reservations/Reservation'
 
 class App extends Component {
-  render() {
+  constructor() {
+    super()
+    this.state = {
+
+    }
+  }
+
+
+  render = () => {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
@@ -10,7 +19,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-          
+          <Reservations />
         </div>
       </div>
     )
