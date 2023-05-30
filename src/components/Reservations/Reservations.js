@@ -3,11 +3,12 @@ import './Reservations.css';
 import ReservationCard from '../ReservationCard/ReservationCard';
 
 const Reservations = ({ reservations  }) => {
+  console.log("what is this?", reservations)
   const reservationCards = reservations.map(reservation =>  {
     return(
       <ReservationCard 
         key={reservation.id}
-        id={reservation .id}
+        id={reservation.id}
         date={reservation.date}
         name={reservation.name}
         number={reservation.number}

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import './Form.css';
 
 class Form extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       name: "",
       date: "",
@@ -12,12 +12,26 @@ class Form extends Component {
     }
   }
 
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
   clearInputs = () => {
     this.setState({ name: "", date: "", time: "", number: ""  })
   }
 
-  handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value })
+  submitReservation = (event) => {
+    event.preventDefault();
+    const newReservation = {
+     key: 10,
+     id: 10,
+     name: this.state.name,
+     date: this.state.date,
+     time: this.state.time,
+     number: this.state.number
+    }
+    this.props.makeReservation(newReservation);
+    this.clearInputs();
   }
 
   render = () =>  {
@@ -57,7 +71,7 @@ class Form extends Component {
             onChange={event => this.handleChange(event)}
           />
         </form>
-        <button className="button" onClick={this.clearInputs}> Make Reservation </button>
+        <button className="button" onClick={event => this.submitReservation(event)}> Make Reservation </button>
       </div>
     )
   }
