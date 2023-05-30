@@ -23,12 +23,12 @@ class Form extends Component {
   submitReservation = (event) => {
     event.preventDefault();
     const newReservation = {
-     key: 10,
-     id: 10,
-     name: this.state.name,
-     date: this.state.date,
-     time: this.state.time,
-     number: this.state.number
+      key: toString(Date.now()),
+      id: toString(Date.now()),
+      name: this.state.name,
+      date: this.state.date,
+      time: this.state.time,
+      number: this.state.number
     }
     this.props.makeReservation(newReservation);
     this.clearInputs();
@@ -44,6 +44,7 @@ class Form extends Component {
             name="name"
             value={this.state.name}
             className="form-field"
+            id="name-field"
             onChange={event => this.handleChange(event)}
           />
           <input
@@ -52,6 +53,7 @@ class Form extends Component {
             name="date"
             value={this.state.date}
             className="form-field"
+            id="date-field"
             onChange={event => this.handleChange(event)}
           />
           <input
@@ -60,6 +62,7 @@ class Form extends Component {
             name="time"
             value={this.state.time}
             className="form-field"
+            id="time-field"
             onChange={event => this.handleChange(event)}
           />
           <input
@@ -68,6 +71,7 @@ class Form extends Component {
             name="number"
             value={this.state.number}
             className="form-field"
+            id="number-field"
             onChange={event => this.handleChange(event)}
           />
         </form>
